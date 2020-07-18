@@ -1,2 +1,1 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_texcor_network_mgmt_texcor_network_mgmt,texcor_network_mgmt.texcor_network_mgmt,model_texcor_network_mgmt_texcor_network_mgmt,,1,0,0,0
