@@ -1,60 +1,24 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="texcor_network_mgmt.list">
-      <field name="name">texcor_network_mgmt list</field>
-      <field name="model">texcor_network_mgmt.texcor_network_mgmt</field>
+    <record model="ir.actions.act_window" id="studio_customization.circuit_ids_b7c77e23-63a7-47ca-895a-eb8fc6272412">
+      <field name="name">Circuit IDs</field>
+      <field name="res_model">circuit</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_circuit_tree">
+      <field name="name">texcor.network.mgmt.circuit.name</field>
+      <field name="model">circuit</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+        <tree string="Circuit IDs">
+          <field name='name'/>
+          <field name='service_order_id'/>
+          <field name='status'/>
+          <field name='pop_id'/>
+          <field name='location_id'/>
+          <field name='write_date'/>
         </tree>
       </field>
     </record>
-    -->
-
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="texcor_network_mgmt.action_window">
-      <field name="name">texcor_network_mgmt window</field>
-      <field name="res_model">texcor_network_mgmt.texcor_network_mgmt</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="texcor_network_mgmt.action_server">
-      <field name="name">texcor_network_mgmt server</field>
-      <field name="model_id" ref="model_texcor_network_mgmt_texcor_network_mgmt"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="texcor_network_mgmt" id="texcor_network_mgmt.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="texcor_network_mgmt.menu_1" parent="texcor_network_mgmt.menu_root"/>
-    <menuitem name="Menu 2" id="texcor_network_mgmt.menu_2" parent="texcor_network_mgmt.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="texcor_network_mgmt.menu_1_list" parent="texcor_network_mgmt.menu_1"
-              action="texcor_network_mgmt.action_window"/>
-    <menuitem name="Server to list" id="texcor_network_mgmt" parent="texcor_network_mgmt.menu_2"
-              action="texcor_network_mgmt.action_server"/>
-    -->
   </data>
 </odoo>
