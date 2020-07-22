@@ -42,5 +42,43 @@
         </tree>
       </field>
     </record>
+
+    <record model="ir.actions.act_window" id="studio_customization.pop_718877a3-b260-4420-92bb-d793150b3001">
+      <field name="name">POP</field>
+      <field name="res_model">pop</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_pop_tree">
+      <field name="name">texcor.network.mgmt.pop.name</field>
+      <field name="model">pop</field>
+      <field name="arch" type="xml">
+        <tree string="POP">
+          <field name='name'/>
+          <field name='geo_cooridinates'/>
+          <field name='pop_type'/>
+          <field name='tower_ids'/>
+          <field name='circuit_ids'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="studio_customization.towers_2be476d5-0aca-47b9-b4e9-de919ec014b8">
+      <field name="name">Tower</field>
+      <field name="res_model">tower</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_tower_tree">
+      <field name="name">texcor.network.mgmt.tower.name</field>
+      <field name="model">tower</field>
+      <field name="arch" type="xml">
+        <tree string="Tower">
+          <field name='name'/>
+          <field name='pop_id'/>
+          <field name='array_type'/>
+        </tree>
+      </field>
+    </record>
   </data>
 </odoo>

@@ -12,8 +12,10 @@ class POP(models.Model):
     ]
 
     name = fields.Char(string='POP Name')
-    geo_cooridinates = fields.Char(string='GEO Cooridinates')
+    hut_number = fields.Integer(string='Hut Number')
+    geo_cooridinates = fields.Char(string='GEO Cooridinates', widget='char')
     pop_type = fields.Selection(POP_TYPE, 'POP Type')
 
-    tower_id = fields.One2many(string='Towers', comodel_name='towers', inverse_name='pop_id', ondelete='cascade')
+    network_info = fields.One2many(string='Network Info', comodel_name='equipment', inverse_name='pop_id', ondelete='cascade')
+    tower_ids = fields.One2many(string='Towers', comodel_name='towers', inverse_name='pop_id', ondelete='cascade')
     circuit_ids = fields.One2many(string='Circuit IDs', comodel_name='circuit', inverse_name='pop_id', ondelete='cascade')
