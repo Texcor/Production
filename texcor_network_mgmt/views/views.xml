@@ -20,5 +20,27 @@
         </tree>
       </field>
     </record>
+
+    <record model="ir.actions.act_window" id="studio_customization.ip_mgmt_55e18c3f-c3dc-4260-bf23-c09599acb00a">
+      <field name="name">IP MGMT</field>
+      <field name="res_model">ip_management</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_ip_management_tree">
+      <field name="name">texcor.network.mgmt.ip.management.name</field>
+      <field name="model">ip_management</field>
+      <field name="arch" type="xml">
+        <tree string="IP MGMT">
+          <field name='name'/>
+          <field name='provider_ip'/>
+          <field name='cidr'/>
+          <field name='parent_network'/>
+          <field name='internal_use'/>
+          <field name='circuit_id'/>
+          <field name='location_id'/>
+        </tree>
+      </field>
+    </record>
   </data>
 </odoo>
