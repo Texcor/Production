@@ -46,7 +46,7 @@ class Circuits(models.Model):
     location_id = fields.Many2one(string='Service Location', comodel_name='res.partner', ondelete='cascade')
     
     description = fields.Text(string='Description')
-    network_cidr = fields.Char(string='Network Address/CIDR')
+    network_cidr = fields.Char(string='Network Address/CIDR', compute='_compute_network_cidr')
 
     @api.depends('cidr', 'network_address')
     def _compute_network_cidr(self):
