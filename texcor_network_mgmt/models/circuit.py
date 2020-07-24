@@ -35,7 +35,7 @@ class Circuit(models.Model):
     qos_id = fields.Many2one(string='QOS', comodel_name='qos', ondelete='cascade')
     vlan_id = fields.Integer(string='VLANID')
 
-    ap_name = fields.Many2one(string='AP Name', comodel_name='equipment', invisible='[("circuit_type", "!=", "Wireless")]', ondelete='cascade')
+    ap_name_id = fields.Many2one(string='AP Name', comodel_name='equipment', invisible='[("circuit_type", "!=", "Wireless")]', ondelete='cascade')
     tower_id = fields.Many2one(string='Tower', comodel_name='tower', related='ap_name.tower', invisible='[("circuit_type","!=","Wireless")]')
     
     pe_switch_id = fields.Many2one(string='PE Switch', comodel_name='equipment', invisible='[["circuit_type","=","Wireless"]]', ondelete='cascade')

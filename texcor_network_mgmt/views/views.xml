@@ -80,5 +80,44 @@
         </tree>
       </field>
     </record>
+
+    <record model="ir.actions.act_window" id="studio_customization.equipment_39221231-3c4f-4b8e-be88-a96be4df6943">
+      <field name="name">Equipment</field>
+      <field name="res_model">equipment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_tree">
+      <field name="name">texcor.network.mgmt.equipment.name</field>
+      <field name="model">equipment</field>
+      <field name="arch" type="xml">
+        <tree string="Equipment">
+          <field name='in_service'/>
+          <field name='name'/>
+          <field name='ip_management_id'/>
+          <field name='pop_id'/>
+          <field name='manufacturer'/>
+          <field name='model'/>
+          <field name='serial_number'/>
+          <field name='display_name'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="studio_customization.equipment_1160d73d-af84-4f9e-8960-aab611e056df">
+      <field name="name">Equipment Table</field>
+      <field name="res_model">equipment_table</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_table_tree">
+      <field name="name">texcor.network.mgmt.equipment.table.name</field>
+      <field name="model">equipment_table</field>
+      <field name="arch" type="xml">
+        <tree string="Equipment">
+          <field name='name'/>
+        </tree>
+      </field>
+    </record>
   </data>
 </odoo>

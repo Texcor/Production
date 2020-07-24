@@ -5,27 +5,12 @@ from odoo import models, fields, api
 class EquipmentTable(models.Model):
     _name = 'equipment_table'
 
-    MANUFACTURER = [
-        ('moxa', 'Moxa'),
-        ('cisco', 'Cisco'),
-        ('cambium', 'Cambium'),
-        ('paloalto', 'Palo Alto'),
-    ]
+    manufacturer = fields.Char(string='Manufacturer')
+    model  = fields.Char(string='Model')
+    l3_capable = fields.Boolean(string='L3 Capable')
+    type_name = fields.Char(string='Type')
 
-    MODEL = [
-        ('PA-850', 'PA-850'),
-        ('ePMP 1000', 'ePMP 1000'),
-        ('WS-C3650-24TS-L', 'WS-C3650-24TS-L'),
-        ('EDS-P506E-4PoE-2GTXSFP-T', 'EDS-P506E-4PoE-2GTXSFP-T'),
-        ('ICS-G7826A-20GSFP-4GTXSFP-2XG-HV-HV', 'ICS-G7826A-20GSFP-4GTXSFP-2XG-HV-HV'),
-    ]
-
-    name = fields.Char(string='DNS Hostname')
-    in_service = fields.Boolean(string='In Service')
-    serial_number = fields.Char(string='Serial Number')
-
-    model  = fields.Selection(MODEL, 'Model')
-    manufacturer = fields.Selection(MANUFACTURER, 'Manufacturer')
+    l2_capable = fields.Boolean(string='L2 Capable')
+    class_name = fields.Char(string='Class')
+    name = fields.Char(string='Name')
     
-    ip_management_id = fields.Many2one(string='Management IP', comodel_name='ip_management', ondelete='cascade')
-    pop_id = fields.Many2one(string='POP', comodel_name='pop', ondelete='cascade')
