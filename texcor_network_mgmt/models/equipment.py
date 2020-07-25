@@ -28,6 +28,12 @@ class Equipment(models.Model):
         ('edge', 'Edge'),
     ]
 
+    MODULE_MODE = [
+        ('eptpmaster', 'ePTP Master'),
+        ('eptpslave', 'ePTP Slave'),
+        ('ap', 'AP'),
+    ]
+
     name = fields.Char(string='DNS Hostname')
     serial_number = fields.Char(string='Serial Number')
     mac_address = fields.Char(string='Eth Mac Address')
@@ -44,3 +50,7 @@ class Equipment(models.Model):
     ip_management_id = fields.Many2one(string='Management IP', comodel_name='ip_management', ondelete='cascade')
     pop_id = fields.Many2one(string='POP', comodel_name='pop', ondelete='cascade')
     circuit_ids = fields.One2many(string='Circuit IDs', comodel_name='circuit', inverse_name='ap_name_id', ondelete='cascade')
+    tower_id = fields.Many2one(string='Tower', comodel_name='tower', ondelete='cascade')
+    wireless_ssid = fields.Char(string='Wireless SSID')
+    wireless_mac = fields.Char(string='Wireless MAC')
+    module_mode = fields.Selection(MODULE_MODE, 'Wireless Module Mode')

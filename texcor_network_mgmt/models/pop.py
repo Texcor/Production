@@ -17,5 +17,5 @@ class POP(models.Model):
     pop_type = fields.Selection(POP_TYPE, 'POP Type')
 
     network_info = fields.One2many(string='Network Info', comodel_name='equipment', inverse_name='pop_id', ondelete='cascade')
-    tower_ids = fields.One2many(string='Towers', comodel_name='towers', inverse_name='pop_id', ondelete='cascade')
+    tower_ids = fields.One2many(string='Towers', comodel_name='tower', inverse_name='pop_id', ondelete='cascade')
     circuit_ids = fields.One2many(string='Circuit IDs', comodel_name='circuit', inverse_name='pop_id', ondelete='cascade')

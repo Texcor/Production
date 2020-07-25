@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class Tower(models.Model):
-    _name = 'towers'
+    _name = 'tower'
 
     ARRAY_TYPE = [
         ('ptp', 'PTP'),

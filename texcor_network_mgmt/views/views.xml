@@ -119,5 +119,21 @@
         </tree>
       </field>
     </record>
+
+    <record model="ir.actions.act_window" id="studio_customization.qos_8ac1826f-92d9-493e-b1fc-f2a8d42edd56">
+      <field name="name">QOS</field>
+      <field name="res_model">qos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_table_tree">
+      <field name="name">texcor.network.mgmt.qos.name</field>
+      <field name="model">qos</field>
+      <field name="arch" type="xml">
+        <tree string="QOS">
+          <field name='name'/>
+        </tree>
+      </field>
+    </record>
   </data>
 </odoo>

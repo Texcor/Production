@@ -36,7 +36,7 @@ class Circuit(models.Model):
     vlan_id = fields.Integer(string='VLANID')
 
     ap_name_id = fields.Many2one(string='AP Name', comodel_name='equipment', invisible='[("circuit_type", "!=", "Wireless")]', ondelete='cascade')
-    tower_id = fields.Many2one(string='Tower', comodel_name='tower', related='ap_name.tower', invisible='[("circuit_type","!=","Wireless")]')
+    tower_id = fields.Many2one(string='Tower', comodel_name='tower', related='ap_name_id.tower_id', invisible='[("circuit_type","!=","Wireless")]')
     
     pe_switch_id = fields.Many2one(string='PE Switch', comodel_name='equipment', invisible='[["circuit_type","=","Wireless"]]', ondelete='cascade')
     pe_switch_port = fields.Integer(string='PE Switch Port', help='Enter the Port Number i.e. 1/0/0', invisible='[["circuit_type","=","Wireless"]]')
