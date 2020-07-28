@@ -21,16 +21,17 @@ class Circuits(models.Model):
         ('/30', '/30'),
     ]
 
-    AVAILABILITY = [
-        ('assigned', 'Assigned'),
-        ('reserved', 'Reserved'),
-        ('available', 'Available'),
+    AVAILABILITY = 	[
+        ["Available","Available"],
+        ["Reserved","Reserved"],
+        ["Assigned","Assigned"]
     ]
 
+    oldid = fields.Integer(string='Old x_model reference')
+    
     name = fields.Char(string='Network')
     
     net_mask = fields.Char(string='Net Mask')
-    network_ip = fields.Char(string='Network')
     provider_ip = fields.Char(string='Gateway IP')
     network_address = fields.Char(string='Network Address')
 

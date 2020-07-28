@@ -4,16 +4,19 @@ from odoo import models, fields, api
 
 class Tower(models.Model):
     _name = 'tower'
+    # _inherit = 'mail.thread'
 
     ARRAY_TYPE = [
-        ('ptp', 'PTP'),
-        ('ptmp', 'PTMP'),
+        ["PTP","PTP"],
+        ["PTMP","PTMP"],
     ]
 
-    WIRELESS_FREQUENCY = [
-        ('3.6ghz', '3.6Ghz'),
-        ('5.8ghz', '5.8Ghz'),
+    WIRELESS_FREQUENCY = 	[
+        ["3.6Ghz","3.6Ghz"],
+        ["5.8Ghz","5.8Ghz"]
     ]
+
+    oldid = fields.Integer(string='Old x_model reference')
 
     name = fields.Char(string='Name')
 
@@ -34,22 +37,22 @@ class Tower(models.Model):
 
     # Sector 1
     sector_1 = fields.Char(string='Sector 1')
-    h_azimuth = fields.Char(string='H Azimuth')
-    v_azimuth = fields.Char(string='V Azimuth')
+    h_azimuth_1 = fields.Char(string='H Azimuth')
+    v_azimuth_1 = fields.Char(string='V Azimuth')
 
     # Sector 2
     sector_2 = fields.Char(string='Sector 2')
-    h_azimuth = fields.Char(string='H Azimuth')
-    v_azimuth = fields.Char(string='V Azimuth')
+    h_azimuth_2 = fields.Char(string='H Azimuth')
+    v_azimuth_2 = fields.Char(string='V Azimuth')
 
     # Sector 3
     sector_3 = fields.Char(string='Sector 3')
-    h_azimuth = fields.Char(string='H Azimuth')
-    v_azimuth = fields.Char(string='V Azimuth')
+    h_azimuth_3 = fields.Char(string='H Azimuth')
+    v_azimuth_3 = fields.Char(string='V Azimuth')
 
     # Sector 4
     sector_4 = fields.Char(string='Sector 4')
-    h_azimuth = fields.Char(string='H Azimuth')
-    v_azimuth = fields.Char(string='V Azimuth')
+    h_azimuth_4 = fields.Char(string='H Azimuth')
+    v_azimuth_4 = fields.Char(string='V Azimuth')
 
     circuits_ids = fields.Many2many(string='Circuits IDs', comodel_name='circuit', relation='texcor_circuits_towers', ondelete='cascade')

@@ -5,5 +5,6 @@ from . import ip_management
 from . import equipment
 from . import pop
 from . import tower
+from . import tower_type
 from . import qos
 from . import equipment_table

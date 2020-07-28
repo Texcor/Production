@@ -4,35 +4,38 @@ from odoo import models, fields, api
 
 class Equipment(models.Model):
     _name = 'equipment'
+    # _inherit = 'mail.thread'
 
     MANUFACTURER = [
-        ('moxa', 'Moxa'),
-        ('cisco', 'Cisco'),
-        ('cambium', 'Cambium'),
-        ('paloalto', 'Palo Alto'),
+        ('Moxa', 'Moxa'),
+        ('Cisco', 'Cisco'),
+        ('Cambium', 'Cambium'),
+        ('Palo Alto', 'Palo Alto'),
     ]
 
-    MODEL = [
-        ('PA-850', 'PA-850'),
-        ('ePMP 1000', 'ePMP 1000'),
-        ('WS-C3650-24TS-L', 'WS-C3650-24TS-L'),
-        ('EDS-P506E-4PoE-2GTXSFP-T', 'EDS-P506E-4PoE-2GTXSFP-T'),
-        ('ICS-G7826A-20GSFP-4GTXSFP-2XG-HV-HV', 'ICS-G7826A-20GSFP-4GTXSFP-2XG-HV-HV'),
+    MODEL = 	[
+        ["PA-850","PA-850"],
+        ["WS-C3650-24TS-L","WS-C3650-24TS-L"],
+        ["ICS-G7826A-20GSFP-4GTXSFP-2XG-HV-HV","ICS-G7826A-20GSFP-4GTXSFP-2XG-HV-HV"],
+        ["EDS-P506E-4PoE-2GTXSFP-T","EDS-P506E-4PoE-2GTXSFP-T"],
+        ["ePMP 1000","ePMP 1000"]
     ]
 
     DEVICE_TYPE = [
-        ('backbone', 'Backbone'),
-        ('wirelessptp', 'Wireless PTP'),
-        ('wirelessptmp', 'Wireless PTMP'),
-        ('l2switch', 'L2 Switch'),
-        ('edge', 'Edge'),
+        ["Backbone","Backbone"],
+        ["Wireless PTP","Wireless PTP"],
+        ["Wireless PTMP","Wireless PTMP"],
+        ["L2 Switch","L2 Switch"],
+        ["Edge","Edge"]
     ]
 
-    MODULE_MODE = [
-        ('eptpmaster', 'ePTP Master'),
-        ('eptpslave', 'ePTP Slave'),
-        ('ap', 'AP'),
+    MODULE_MODE = 	[
+        ["ePTP Master","ePTP Master"],
+        ["ePTP Slave","ePTP Slave"],
+        ["AP","AP"]
     ]
+    
+    oldid = fields.Integer(string='Old x_model reference')
 
     name = fields.Char(string='DNS Hostname')
     serial_number = fields.Char(string='Serial Number')
@@ -43,7 +46,7 @@ class Equipment(models.Model):
     cpe_device = fields.Boolean(string='CPE Device')
     number_of_ports = fields.Integer(string='Number of Ports')
 
-    model  = fields.Selection(MODEL, 'Model')
+    model = fields.Selection(MODEL, 'Model')
     device_type = fields.Selection(DEVICE_TYPE, 'Device Type')
     manufacturer = fields.Selection(MANUFACTURER, 'Manufacturer')
     

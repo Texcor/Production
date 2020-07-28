@@ -5,20 +5,19 @@ from odoo import models, fields, api
 class Circuit(models.Model):
     _name = 'circuit'
 
-    STATUS = [
-        ('preturnup', 'Pre-Turnup'),
-        ('circuitActive', 'Active'),
-        ('maintenance', 'Maintenance'),
-        ('testturnup', 'Test & Turnup'),
+    STATUS = 	[
+        ["Pre-Turnup","Pre-Turnup"],
+        ["Test & Turnup","Test & Turnup"],
+        ["Production","Production"]
     ]
 
-    CIRCUIT_TYPE = [
-        ('fiber', 'Fiber'),
-        ('wireless', 'Wireless'),
+    CIRCUIT_TYPE = 	[
+        ["Wireless","Wireless"],
+        ["Fiber","Fiber"]
     ]
 
+    oldid = fields.Integer(string='Old x_model reference')
     name = fields.Char(string='CircuitID')
-    circuit_id = fields.Char(string='CircuitID')
 
     # Circuit Informaiton
     circuit_type = fields.Selection(CIRCUIT_TYPE , 'Circuit Type')
@@ -33,7 +32,7 @@ class Circuit(models.Model):
     status = fields.Selection(STATUS, 'Status')
     
     qos_id = fields.Many2one(string='QOS', comodel_name='qos', ondelete='cascade')
-    vlan_id = fields.Integer(string='VLANID')
+    vlanid = fields.Integer(string='VLANID')
 
     ap_name_id = fields.Many2one(string='AP Name', comodel_name='equipment', invisible='[("circuit_type", "!=", "Wireless")]', ondelete='cascade')
     tower_id = fields.Many2one(string='Tower', comodel_name='tower', related='ap_name_id.tower_id', invisible='[("circuit_type","!=","Wireless")]')

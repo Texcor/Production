@@ -4,13 +4,16 @@ from odoo import models, fields, api
 
 class POP(models.Model):
     _name = 'pop'
+    # _inherit = 'mail.thread'
 
-    POP_TYPE = [
-        ('lateral', 'Lateral'),
-        ('mainline', 'Main Line'),
-        ('networkonly', 'Network Only'),
+    POP_TYPE = 	[
+        ["Main Line","Main Line"],
+        ["Lateral","Lateral"],
+        ["Network Only","Network Only"]
     ]
 
+    oldid = fields.Integer(string='Old x_model reference')
+    
     name = fields.Char(string='POP Name')
     hut_number = fields.Integer(string='Hut Number')
     geo_cooridinates = fields.Char(string='GEO Cooridinates', widget='char')

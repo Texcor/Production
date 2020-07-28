@@ -81,6 +81,12 @@
       </field>
     </record>
 
+    <!-- <record model="ir.actions.act_window" id="studio_customization.default_form_view_fo_0e17e06a-5263-4b30-a6a9-eeadb5d24a5b">
+      <field name="name">Equipment</field>
+      <field name="res_model">equipment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <record model="ir.actions.act_window" id="studio_customization.equipment_39221231-3c4f-4b8e-be88-a96be4df6943">
       <field name="name">Equipment</field>
       <field name="res_model">equipment</field>
@@ -102,7 +108,7 @@
           <field name='display_name'/>
         </tree>
       </field>
-    </record>
+    </record> -->
 
     <record model="ir.actions.act_window" id="studio_customization.equipment_1160d73d-af84-4f9e-8960-aab611e056df">
       <field name="name">Equipment Table</field>
