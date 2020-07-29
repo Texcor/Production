@@ -210,20 +210,20 @@
           <attribute name="string">POP Name</attribute>
         </xpath>
         <xpath expr="//group[@name='studio_group_a9bf56_left']" position="inside">
-          <field name="x_studio_pop_type" string="POP Type"/>
+          <field name="pop_type" string="POP Type"/>
           <field name="id" attrs="{}" invisible="1"/>
-          <field name="x_studio_hut_number" string="Hut Number" attrs="{&quot;invisible&quot;: [[&quot;x_studio_pop_type&quot;,&quot;=&quot;,&quot;Lateral&quot;]], &quot;required&quot;: [[&quot;x_studio_pop_type&quot;,&quot;=&quot;,&quot;Backbone&quot;]]}"/>
-          <field name="x_studio_geo_cooridinates" string="GEO Cooridinates" widget="char"/>
+          <field name="hut_number" attrs="{&quot;invisible&quot;: [[&quot;pop_type&quot;,&quot;=&quot;,&quot;Lateral&quot;]], &quot;required&quot;: [[&quot;pop_type&quot;,&quot;=&quot;,&quot;Backbone&quot;]]}"/>
+          <field name="geo_cooridinates" widget="char"/>
         </xpath>
         <xpath expr="//group[@name='studio_group_a9bf56']" position="after">
           <group name="studio_group_eEOtE">
             <group name="studio_group_eEOtE_left">
-              <field name="x_studio_field_IZJIq" string="Towers">
+              <field name="tower_ids" string="Towers">
                 <tree string="Towers">
-                  <field name="x_name" modifiers="{}"/>
-                  <field name="x_studio_field_kWVR2" can_create="true" can_write="true" modifiers="{}"/>
-                  <field name="x_studio_field_mkCNY" modifiers="{}"/>
-                  <field name="x_studio_wireless_frequency"/>
+                  <field name="name" modifiers="{}"/>
+                  <field name="pop_id" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="array_type" modifiers="{}"/>
+                  <field name="wireless_frequency"/>
                 </tree>
               </field>
             </group>
@@ -231,14 +231,14 @@
           </group>
           <group name="studio_group_P47BI">
             <group name="studio_group_P47BI_left">
-              <field name="x_studio_field_EN6TQ">
+              <field name="circuit_ids">
                 <tree string="Circuit IDs">
-                  <field name="x_name" modifiers="{}"/>
-                  <field name="x_studio_field_HMu1i" can_create="true" can_write="true" modifiers="{}"/>
-                  <field name="x_studio_field_NPD3S"/>
-                  <field name="x_studio_field_6DKAX" can_create="true" can_write="true" modifiers="{}"/>
-                  <field name="x_studio_customer" can_create="true" can_write="true" modifiers="{}"/>
-                  <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="name" modifiers="{}"/>
+                  <field name="service_order_id" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="status"/>
+                  <field name="pop_id" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="customer_id" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="location_id" can_create="true" can_write="true" modifiers="{}"/>
                 </tree>
               </field>
             </group>
@@ -247,13 +247,13 @@
           </group>
           <group name="studio_group_wAUHf">
             <group name="studio_group_wAUHf_left" string="Network Info"/>
-            <field name="x_studio_field_HPclR" string="Network Info">
+            <field name="network_info_ids" string="Network Info">
               <tree string="Equipment">
-                <field name="x_name" modifiers="{}" string="Switch Name"/>
-                <field name="x_studio_serial_number"/>
-                <field name="x_studio_field_a2987"/>
-                <field name="x_studio_model"/>
-                <field name="x_studio_device_type"/>
+                <field name="name" modifiers="{}" string="Switch Name"/>
+                <field name="serial_number"/>
+                <field name="manufacturer"/>
+                <field name="model"/>
+                <field name="device_type"/>
               </tree>
             </field>
           </group>
@@ -266,16 +266,6 @@
         </xpath>
         <xpath expr="//group[@name='studio_group_P47BI_right'][not(ancestor::field)]" position="replace"/>
         <xpath expr="//group[@name='studio_group_wAUHf_left'][not(ancestor::field)]" position="replace"/>
-        <xpath expr="//field[@name='x_studio_field_HPclR'][not(ancestor::field)]" position="before">
-          <xpath expr="//field[@name='x_studio_field_EN6TQ'][not(ancestor::field)]" position="move"/>
-        </xpath>
-        <xpath expr="//field[@name='x_studio_field_EN6TQ'][not(ancestor::field)]" position="before">
-          <xpath expr="//field[@name='x_studio_field_IZJIq'][not(ancestor::field)]" position="move"/>
-        </xpath>
-        <xpath expr="//group[@name='studio_group_P47BI_left'][not(ancestor::field)]" position="replace"/>
-        <xpath expr="//field[@name='x_studio_field_IZJIq'][not(ancestor::field)]" position="before">
-          <xpath expr="//field[@name='x_studio_field_HPclR'][not(ancestor::field)]" position="move"/>
-        </xpath>
       </field>
     </record>
 
@@ -307,48 +297,48 @@
         <xpath expr="//group[@name='studio_group_49c229_left']" position="inside">
           <field name="x_studio_field_tjLbn"/>
           <field name="id" attrs="{}" invisible="1"/>
-          <field name="x_studio_field_kWVR2"/>
-          <field name="x_studio_geo_location" string="Geo Location"/>
-          <field name="x_studio_tower_height_in_ft" string="Tower Height (in ft)"/>
+          <field name="pop_id"/>
+          <field name="geo_location" string="Geo Location"/>
+          <field name="tower_height" string="Tower Height (in ft)"/>
         </xpath>
         <xpath expr="//group[@name='studio_group_49c229_right']" position="attributes">
           <attribute name="string">Wireless info</attribute>
         </xpath>
         <xpath expr="//group[@name='studio_group_49c229_right']" position="inside">
-          <field name="x_studio_field_mkCNY" string="Array Type"/>
-          <field name="x_studio_wireless_frequency" string="Wireless Frequency"/>
-          <field name="x_studio_array_height_in_ft" string="Array Height (in ft)"/>
+          <field name="array_type" string="Array Type"/>
+          <field name="wireless_frequency" string="Wireless Frequency"/>
+          <field name="array_height" string="Array Height (in ft)"/>
         </xpath>
         <xpath expr="//group[@name='studio_group_49c229']" position="after">
           <group name="studio_group_WrQbC">
             <group name="studio_group_WrQbC_left" string="Network Info">
-              <field name="x_studio_ap_name" string="AP Name" domain="[&quot;|&quot;,[&quot;x_studio_device_type&quot;,&quot;=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;=&quot;,&quot;Wireless PTMP&quot;]]"/>
+              <field name="ap_name_id" string="AP Name" domain="[&quot;|&quot;,[&quot;device_type&quot;,&quot;=&quot;,&quot;Wireless PTP&quot;],[&quot;device_type&quot;,&quot;=&quot;,&quot;Wireless PTMP&quot;]]"/>
             </group>
             <group name="studio_group_WrQbC_right"/>
           </group>
           <field name="x_studio_field_V8JAb"/>
           <group name="studio_group_zPUGa">
             <group name="studio_group_zPUGa_left">
-              <field name="x_studio_sector_1" string="Sector 1"/>
-              <field name="x_studio_h_azimuth" string="H Azimuth"/>
-              <field name="x_studio_v_azimuth" string="V Azimuth"/>
+              <field name="sector_1" string="Sector 1"/>
+              <field name="h_azimuth_1" string="H Azimuth"/>
+              <field name="v_azimuth_1" string="V Azimuth"/>
             </group>
             <group name="studio_group_zPUGa_right">
-              <field name="x_studio_sector_2" string="Sector 2"/>
-              <field name="x_studio_h_azimuth_1" string="H Azimuth"/>
-              <field name="x_studio_v_azimuth_1" string="V Azimuth"/>
+              <field name="sector_2" string="Sector 2"/>
+              <field name="h_azimuth_2" string="H Azimuth"/>
+              <field name="v_azimuth_2" string="V Azimuth"/>
             </group>
           </group>
           <group name="studio_group_9pOaP">
             <group name="studio_group_9pOaP_left">
-              <field name="x_studio_sector_3" string="Sector 3"/>
-              <field name="x_studio_h_azimuth_2"/>
-              <field name="x_studio_v_azimuth_2"/>
+              <field name="sector_3" string="Sector 3"/>
+              <field name="h_azimuth_3"/>
+              <field name="v_azimuth_3"/>
             </group>
             <group name="studio_group_9pOaP_right">
-              <field name="x_studio_sector_4" string="Sector 4"/>
-              <field name="x_studio_h_azimuth_3" string="H Azimuth"/>
-              <field name="x_studio_v_azimuth_3" string="V Azimuth"/>
+              <field name="sector_4" string="Sector 4"/>
+              <field name="h_azimuth_4" string="H Azimuth"/>
+              <field name="v_azimuth_4" string="V Azimuth"/>
             </group>
           </group>
           <group name="studio_group_E4xbc">
@@ -356,11 +346,11 @@
           <field name="x_studio_field_nje8n">
             <tree string="Circuit IDs">
               <field name="x_name" modifiers="{}"/>
-              <field name="x_studio_field_HMu1i" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="x_studio_field_NPD3S" modifiers="{}"/>
-              <field name="x_studio_field_6DKAX" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="x_studio_customer" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="service_order_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="status" modifiers="{}"/>
+              <field name="pop_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="customer_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="location_id" can_create="true" can_write="true" modifiers="{}"/>
             </tree>
           </field>
         </xpath>
@@ -388,37 +378,37 @@
         </xpath>
         <xpath expr="//group[@name='studio_group_8db41f_left']" position="inside">
           <field name="x_studio_field_a2987" widget="selection" string="Manufacturer"/>
-          <field name="x_studio_model" string="Model"/>
-          <field name="x_studio_field_6CAey" string="Management IP"/>
-          <field name="x_studio_serial_number" string="Serial Number"/>
-          <field name="x_studio_mac_address" string="Eth Mac Address"/>
-          <field name="x_studio_firmware_version" string="Firmware Version"/>
-          <field name="x_studio_field_vitwV"/>
-          <field name="x_studio_cpe_device" string="CPE Device"/>
-          <field name="x_studio_field_tQkqb" string="Number of Ports" attrs="{&quot;invisible&quot;: [[&quot;x_studio_cpe_device&quot;,&quot;=&quot;,True]]}"/>
-          <field name="x_studio_in_service" string="In Service" widget="boolean"/>
-          <field name="x_studio_device_type" string="Device Type" default_value="Wireless PTP"/>
-          <field name="x_studio_circuit_ids" string="Circuit IDs" attrs="{}" readonly="1">
+          <field name="model" string="Model"/>
+          <field name="ip_management_id" string="Management IP"/>
+          <field name="serial_number" string="Serial Number"/>
+          <field name="mac_address" string="Eth Mac Address"/>
+          <field name="firmware_version" string="Firmware Version"/>
+          <field name="pop_id"/>
+          <field name="cpe_device" string="CPE Device"/>
+          <field name="number_of_ports" string="Number of Ports" attrs="{&quot;invisible&quot;: [[&quot;cpe_device&quot;,&quot;=&quot;,True]]}"/>
+          <field name="in_service" string="In Service" widget="boolean"/>
+          <field name="device_type" string="Device Type" default_value="Wireless PTP"/>
+          <field name="circuit_ids" string="Circuit IDs" attrs="{}" readonly="1">
             <tree string="Circuit IDs"/>
           </field>
-          <field name="x_studio_tower" string="Tower" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
-          <field name="x_studio_wireless_ssid" string="Wireless SSID" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
-          <field name="x_studio_wireless_mac" string="Wireless MAC" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
-          <field name="x_studio_access_point_mode" string="Wireless Module Mode" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+          <field name="tower_id" string="Tower" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+          <field name="wireless_ssid" string="Wireless SSID" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+          <field name="wireless_mac" string="Wireless MAC" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+          <field name="module_mode" string="Wireless Module Mode" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
         </xpath>
         <xpath expr="//group[@name='studio_group_8db41f_right']" position="inside">
           <field name="x_studio_field_b65bz" string="Circuit IDs" attrs="{}" readonly="1">
             <tree string="Circuit IDs">
               <field name="x_studio_field_6DKAX" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="x_studio_field_NPD3S" modifiers="{}"/>
-              <field name="x_studio_tower_1"/>
-              <field name="x_studio_vlanid_1" string="VLANID"/>
-              <field name="x_studio_customer" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="x_name"/>
-              <field name="x_studio_customer"/>
-              <field name="x_studio_circuit_type"/>
+              <field name="location_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="status" modifiers="{}"/>
+              <field name="tower_id"/>
+              <field name="vlanid" string="VLANID"/>
+              <field name="customer_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="location_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="name"/>
+              <field name="customer_id"/>
+              <field name="circuit_type"/>
             </tree>
           </field>
         </xpath>

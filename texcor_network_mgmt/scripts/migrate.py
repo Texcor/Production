@@ -21,11 +21,11 @@ circuit = {
     'x_name': 'name',
     'x_studio_circuit_type': 'circuit_type',
     'x_studio_field_6DKAX': 'pop_id',
-    'x_studio_customer': 'customer',
+    'x_studio_customer': 'customer_id',
     'x_studio_service_location': 'location_id',
-    'x_studio_customer_id': 'customer_id',
+    'x_studio_customer_id': 'customerId',
     'x_studio_field_HMu1i': 'service_order_id',
-    'x_studio_status': 'status',
+    'x_studio_field_NPD3S': 'status',
     'x_studio_field_eqo8o': 'qos_id',
     'x_studio_vlanid': 'vlanid',
     'x_studio_ap_name': 'ap_name_id',
@@ -97,7 +97,6 @@ pop = {
     'x_studio_hut_number': 'hut_number',
     'x_studio_geo_cooridinates': 'geo_cooridinates',
     'x_studio_pop_type': 'pop_type',
-    'x_studio_field_HPclR': 'network_info',
 }
 
 qos = {
