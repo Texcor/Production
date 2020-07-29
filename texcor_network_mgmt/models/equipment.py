@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class Equipment(models.Model):
     _name = 'equipment'
-    # _inherit = 'mail.thread'
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     MANUFACTURER = [
         ('Moxa', 'Moxa'),

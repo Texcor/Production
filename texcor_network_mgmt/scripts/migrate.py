@@ -35,6 +35,7 @@ circuit = {
     'x_studio_dmarc_location': 'dmarc_location',
     'x_studio_documents': 'documents',
     'x_studio_notes': 'notes',
+    'x_studio_sales_person': 'sales_person',
 }
 
 equipment = {

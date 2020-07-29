@@ -6,8 +6,8 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="texcor_network_mgmt_circuit_tree">
-      <field name="name">texcor.network.mgmt.circuit.name</field>
+    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_f45be9a3-ea9d-4c15-8558-a7e3d3fbf6c3">
+      <field name="name">texcor.network.mgmt.circuit.tree</field>
       <field name="model">circuit</field>
       <field name="arch" type="xml">
         <tree string="Circuit IDs">
@@ -21,14 +21,103 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__7768c378-4294-4a41-bd8a-af462df00b39">
+      <field name="name">texcor.network.mgmt.circuit.form</field>
+      <field name="model">circuit</field>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='studio_group_ba0aab']" position="replace">
+          <group name="studio_group_33Sa5">
+            <group name="studio_group_33Sa5_left" string="Circuit Information">
+              <field name="circuit_type"/>
+              <field name="pop_id" required="1"/>
+              <field name="customer_id" string="Customer" required="1"/>
+              <field name="location_id" domain="[[&quot;type&quot;,&quot;=&quot;,&quot;other&quot;]]"/>
+              <field name="customer_id" readonly="1"/>
+              <field name="service_order_id"/>
+              <field name="status" default_value="PreTurnup"/>
+              <field name="qos_id"/>
+              <field name="vlanid" help="Enter the VLAN ID i.e. 500"/>
+              <field name="pe_switch_id" attrs="{&quot;invisible&quot;: [[&quot;circuit_type&quot;,&quot;=&quot;,&quot;Wireless&quot;]]}"/>
+              <field name="pe_switch_port" help="Enter the Port Number i.e. 1/0/0" widget="integer" attrs="{&quot;invisible&quot;: [[&quot;circuit_type&quot;,&quot;=&quot;,&quot;Wireless&quot;]]}"/>
+              <field name="ap_name_id" string="AP Name" attrs="{&quot;invisible&quot;: [[&quot;circuit_type&quot;,&quot;!=&quot;,&quot;Wireless&quot;]]}" domain="[&quot;|&quot;,[&quot;device_type&quot;,&quot;=&quot;,&quot;Wireless PTP&quot;],[&quot;device_type&quot;,&quot;=&quot;,&quot;Wireless PTMP&quot;]]"/>
+              <field name="tower_id" string="Tower" attrs="{&quot;invisible&quot;: [[&quot;circuit_type&quot;,&quot;!=&quot;,&quot;Wireless&quot;]]}" readonly="1"/>
+            </group>
+            <group name="studio_group_33Sa5_right" string="Customer Site Information">
+              <field name="tech_name_id"/>
+              <field name="tech_phone"/>
+              <field name="tech_email"/>
+              <field name="address"/>
+              <field name="city"/>
+              <field name="state"/>
+              <field name="dmarc_location"/>
+            </group>
+          </group>
+          <group name="studio_group_MNgVs">
+            <group name="studio_group_MNgVs_left">
+              <field name="order_line_ids" string="Order Lines">
+                <tree string="Sales Order Lines" create="false">
+                  <field name="name" modifiers="{&quot;required&quot;: true}"/>
+                  <field name="product_uom_qty" string="Qty" on_change="1" modifiers="{&quot;required&quot;: true}"/>
+                  <field name="product_uom" string="Unit of Measure" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;id&quot;: 15, &quot;name&quot;: &quot;Manage Multiple Units of Measure&quot;, &quot;display_name&quot;: &quot;Technical Settings / Manage Multiple Units of Measure&quot;}]" invisible="1" modifiers="{&quot;invisible&quot;: true, &quot;column_invisible&quot;: true}"/>
+                  <field name="route_id" options="{'no_create': True}" on_change="1" can_create="true" can_write="true" studio_groups="[{&quot;id&quot;: 60, &quot;name&quot;: &quot;Enable Route on Sales Order Line&quot;, &quot;display_name&quot;: &quot;Technical Settings / Enable Route on Sales Order Line&quot;}]" invisible="1" modifiers="{&quot;invisible&quot;: true, &quot;column_invisible&quot;: true}"/>
+                  <field name="price_subtotal" sum="Total" widget="monetary" modifiers="{&quot;readonly&quot;: true}"/>
+                </tree>
+              </field>
+            </group>
+          </group>
+          <group name="studio_group_uVYWX" style="width:50%%">
+            <group name="studio_group_uVYWX_left" style="width:50%%">
+              <field name="ip_management_ids" string="IP Addressing" attrs="{}" readonly="1">
+                <tree string="IP Management">
+                  <field name="x_studio_field_Cb0Ha" style="width:50%%"/>
+                  <field name="net_mask" style="width:50%%"/>
+                  <field name="provider_ip" style="width:50%%"/>
+                </tree>
+              </field>
+            </group>
+          </group>
+          <group name="studio_group_L0oW4">
+            <group name="studio_group_L0oW4_left" string="Additional Info">
+              <field filename="documents_filename" name="documents"/>
+              <field name="notes" widget="text" placeholder="Enter Notes Here"/>
+              <field name="sales_person" string="Sales Person"/>
+            </group>
+            <group name="studio_group_L0oW4_right">
+              <field name="create_uid"/>
+              <field name="create_date"/>
+              <field name="write_uid"/>
+              <field name="__last_update"/>
+            </group>
+          </group>
+          <group name="studio_group_maF1f"></group>
+        </xpath>
+        <xpath expr="//form[1]" position="attributes">
+          <attribute name="create">true</attribute>
+          <attribute name="delete">true</attribute>
+          <attribute name="edit">true</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]" position="before">
+          <header>
+            <field name="status" string="Circuit Status" widget="statusbar"/>
+          </header>
+        </xpath>
+        <xpath expr="//field[@name='x_name']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="placeholder">Circuit ID</attribute>
+          <attribute name="required"/>
+          <attribute name="string">CircuitID</attribute>
+        </xpath>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="studio_customization.ip_mgmt_55e18c3f-c3dc-4260-bf23-c09599acb00a">
       <field name="name">IP MGMT</field>
       <field name="res_model">ip_management</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="texcor_network_mgmt_ip_management_tree">
-      <field name="name">texcor.network.mgmt.ip.management.name</field>
+    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_7c36b876-b444-4e5a-a671-ab4ad2c35817">
+      <field name="name">texcor.network.mgmt.ip.management.tree</field>
       <field name="model">ip_management</field>
       <field name="arch" type="xml">
         <tree string="IP MGMT">
@@ -43,14 +132,56 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__7637d0be-bc8f-48dc-80f8-a792dd8ca08b">
+      <field name="name">texcor.network.mgmt.ip.management.form</field>
+      <field name="model">ip_management</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='x_name']" position="attributes">
+          <attribute name="attrs">{}</attribute>
+          <attribute name="required"/>
+          <attribute name="string">Network</attribute>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_a52687_left']" position="inside">
+          <field name="network_address" attrs="{}" required="1"/>
+          <field name="availability"/>
+          <field name="parent_network"/>
+          <field name="internal_use" widget="boolean" attrs="{}"/>
+          <field name="management_ip" attrs="{&quot;invisible&quot;: [[&quot;internal_use&quot;,&quot;=&quot;,False]]}"/>
+          <field name="circuit_id" attrs="{&quot;invisible&quot;: [[&quot;management_ip&quot;,&quot;=&quot;,True]]}"/>
+          <field name="equipment_id"/>
+          <field name="description" attrs="{&quot;invisible&quot;: [[&quot;internal_use&quot;,&quot;=&quot;,False]]}"/>
+          <field name="customer" attrs="{&quot;invisible&quot;: [[&quot;internal_use&quot;,&quot;=&quot;,True]]}" readonly="1"/>
+          <field name="location_id" domain="[[&quot;type&quot;,&quot;=&quot;,&quot;other&quot;]]" attrs="{&quot;invisible&quot;: [[&quot;internal_use&quot;,&quot;=&quot;,True]]}"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_a52687_right']" position="inside">
+          <field name="cidr" widget="selection"/>
+          <field name="provider_ip"/>
+          <field name="net_mask"/>
+          <field name="network_cidr"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_a52687']" position="after">
+          <group name="studio_group_vr8bF">
+            <group name="studio_group_vr8bF_left">
+              <field name="create_uid"/>
+              <field name="create_date"/>
+            </group>
+            <group name="studio_group_vr8bF_right">
+              <field name="write_uid"/>
+              <field name="__last_update"/>
+            </group>
+          </group>
+        </xpath>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="studio_customization.pop_718877a3-b260-4420-92bb-d793150b3001">
       <field name="name">POP</field>
       <field name="res_model">pop</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="texcor_network_mgmt_pop_tree">
-      <field name="name">texcor.network.mgmt.pop.name</field>
+    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_81d2e757-1c5c-4e2f-a8b3-1a6ed5723f2d">
+      <field name="name">texcor.network.mgmt.pop.trees</field>
       <field name="model">pop</field>
       <field name="arch" type="xml">
         <tree string="POP">
@@ -63,14 +194,99 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__64139c63-3c99-473f-98fb-e304f2e46829">
+      <field name="name">texcor.network.mgmt.pop.form</field>
+      <field name="model">pop</field>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='studio_group_a9bf56_right']" position="replace">
+          <group name="studio_group_i40ER">
+            <group name="studio_group_i40ER_right">
+              
+            </group>
+          </group>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/div[1]/h1[1]/field[@name='x_name']" position="attributes">
+          <attribute name="placeholder">POP Alias</attribute>
+          <attribute name="string">POP Name</attribute>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_a9bf56_left']" position="inside">
+          <field name="x_studio_pop_type" string="POP Type"/>
+          <field name="id" attrs="{}" invisible="1"/>
+          <field name="x_studio_hut_number" string="Hut Number" attrs="{&quot;invisible&quot;: [[&quot;x_studio_pop_type&quot;,&quot;=&quot;,&quot;Lateral&quot;]], &quot;required&quot;: [[&quot;x_studio_pop_type&quot;,&quot;=&quot;,&quot;Backbone&quot;]]}"/>
+          <field name="x_studio_geo_cooridinates" string="GEO Cooridinates" widget="char"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_a9bf56']" position="after">
+          <group name="studio_group_eEOtE">
+            <group name="studio_group_eEOtE_left">
+              <field name="x_studio_field_IZJIq" string="Towers">
+                <tree string="Towers">
+                  <field name="x_name" modifiers="{}"/>
+                  <field name="x_studio_field_kWVR2" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="x_studio_field_mkCNY" modifiers="{}"/>
+                  <field name="x_studio_wireless_frequency"/>
+                </tree>
+              </field>
+            </group>
+            <group name="studio_group_eEOtE_right"/>
+          </group>
+          <group name="studio_group_P47BI">
+            <group name="studio_group_P47BI_left">
+              <field name="x_studio_field_EN6TQ">
+                <tree string="Circuit IDs">
+                  <field name="x_name" modifiers="{}"/>
+                  <field name="x_studio_field_HMu1i" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="x_studio_field_NPD3S"/>
+                  <field name="x_studio_field_6DKAX" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="x_studio_customer" can_create="true" can_write="true" modifiers="{}"/>
+                  <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
+                </tree>
+              </field>
+            </group>
+            <group name="studio_group_P47BI_right">
+          </group>
+          </group>
+          <group name="studio_group_wAUHf">
+            <group name="studio_group_wAUHf_left" string="Network Info"/>
+            <field name="x_studio_field_HPclR" string="Network Info">
+              <tree string="Equipment">
+                <field name="x_name" modifiers="{}" string="Switch Name"/>
+                <field name="x_studio_serial_number"/>
+                <field name="x_studio_field_a2987"/>
+                <field name="x_studio_model"/>
+                <field name="x_studio_device_type"/>
+              </tree>
+            </field>
+          </group>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]" position="after">
+          <div class="oe_chatter" name="studio_div_9a3bcb">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_P47BI_right'][not(ancestor::field)]" position="replace"/>
+        <xpath expr="//group[@name='studio_group_wAUHf_left'][not(ancestor::field)]" position="replace"/>
+        <xpath expr="//field[@name='x_studio_field_HPclR'][not(ancestor::field)]" position="before">
+          <xpath expr="//field[@name='x_studio_field_EN6TQ'][not(ancestor::field)]" position="move"/>
+        </xpath>
+        <xpath expr="//field[@name='x_studio_field_EN6TQ'][not(ancestor::field)]" position="before">
+          <xpath expr="//field[@name='x_studio_field_IZJIq'][not(ancestor::field)]" position="move"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_P47BI_left'][not(ancestor::field)]" position="replace"/>
+        <xpath expr="//field[@name='x_studio_field_IZJIq'][not(ancestor::field)]" position="before">
+          <xpath expr="//field[@name='x_studio_field_HPclR'][not(ancestor::field)]" position="move"/>
+        </xpath>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="studio_customization.towers_2be476d5-0aca-47b9-b4e9-de919ec014b8">
       <field name="name">Tower</field>
       <field name="res_model">tower</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="texcor_network_mgmt_tower_tree">
-      <field name="name">texcor.network.mgmt.tower.name</field>
+    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_81d2e757-1c5c-4e2f-a8b3-1a6ed5723f2d">
+      <field name="name">texcor.network.mgmt.tower.tree</field>
       <field name="model">tower</field>
       <field name="arch" type="xml">
         <tree string="Tower">
@@ -81,10 +297,80 @@
       </field>
     </record>
 
-    <!-- <record model="ir.actions.act_window" id="studio_customization.default_form_view_fo_0e17e06a-5263-4b30-a6a9-eeadb5d24a5b">
-      <field name="name">Equipment</field>
-      <field name="res_model">equipment</field>
-      <field name="view_mode">tree,form</field>
+    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__f1f917f0-49e5-4500-bb5e-b7de2dfa8aeb">
+      <field name="name">texcor.network.mgmt.tower.form</field>
+      <field name="model">tower</field>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='studio_group_49c229_left']" position="attributes">
+          <attribute name="string">Tower info</attribute>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_49c229_left']" position="inside">
+          <field name="x_studio_field_tjLbn"/>
+          <field name="id" attrs="{}" invisible="1"/>
+          <field name="x_studio_field_kWVR2"/>
+          <field name="x_studio_geo_location" string="Geo Location"/>
+          <field name="x_studio_tower_height_in_ft" string="Tower Height (in ft)"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_49c229_right']" position="attributes">
+          <attribute name="string">Wireless info</attribute>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_49c229_right']" position="inside">
+          <field name="x_studio_field_mkCNY" string="Array Type"/>
+          <field name="x_studio_wireless_frequency" string="Wireless Frequency"/>
+          <field name="x_studio_array_height_in_ft" string="Array Height (in ft)"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_49c229']" position="after">
+          <group name="studio_group_WrQbC">
+            <group name="studio_group_WrQbC_left" string="Network Info">
+              <field name="x_studio_ap_name" string="AP Name" domain="[&quot;|&quot;,[&quot;x_studio_device_type&quot;,&quot;=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;=&quot;,&quot;Wireless PTMP&quot;]]"/>
+            </group>
+            <group name="studio_group_WrQbC_right"/>
+          </group>
+          <field name="x_studio_field_V8JAb"/>
+          <group name="studio_group_zPUGa">
+            <group name="studio_group_zPUGa_left">
+              <field name="x_studio_sector_1" string="Sector 1"/>
+              <field name="x_studio_h_azimuth" string="H Azimuth"/>
+              <field name="x_studio_v_azimuth" string="V Azimuth"/>
+            </group>
+            <group name="studio_group_zPUGa_right">
+              <field name="x_studio_sector_2" string="Sector 2"/>
+              <field name="x_studio_h_azimuth_1" string="H Azimuth"/>
+              <field name="x_studio_v_azimuth_1" string="V Azimuth"/>
+            </group>
+          </group>
+          <group name="studio_group_9pOaP">
+            <group name="studio_group_9pOaP_left">
+              <field name="x_studio_sector_3" string="Sector 3"/>
+              <field name="x_studio_h_azimuth_2"/>
+              <field name="x_studio_v_azimuth_2"/>
+            </group>
+            <group name="studio_group_9pOaP_right">
+              <field name="x_studio_sector_4" string="Sector 4"/>
+              <field name="x_studio_h_azimuth_3" string="H Azimuth"/>
+              <field name="x_studio_v_azimuth_3" string="V Azimuth"/>
+            </group>
+          </group>
+          <group name="studio_group_E4xbc">
+            </group>
+          <field name="x_studio_field_nje8n">
+            <tree string="Circuit IDs">
+              <field name="x_name" modifiers="{}"/>
+              <field name="x_studio_field_HMu1i" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="x_studio_field_NPD3S" modifiers="{}"/>
+              <field name="x_studio_field_6DKAX" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="x_studio_customer" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
+            </tree>
+          </field>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]" position="after">
+          <div class="oe_chatter" name="studio_div_5051a3">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </xpath>
+      </field>
     </record>
 
     <record model="ir.actions.act_window" id="studio_customization.equipment_39221231-3c4f-4b8e-be88-a96be4df6943">
@@ -93,8 +379,60 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_tree">
-      <field name="name">texcor.network.mgmt.equipment.name</field>
+    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__1dd01c09-3ec8-4097-bf27-496397a45494">
+      <field name="name">texcor.network.mgmt.equipment.form</field>
+      <field name="model">equipment</field>
+      <field name="arch" type="xml">
+        <xpath expr="//form[1]/sheet[1]/div[1]/h1[1]/field[@name='x_name']" position="attributes">
+          <attribute name="string">DNS Hostname</attribute>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_8db41f_left']" position="inside">
+          <field name="x_studio_field_a2987" widget="selection" string="Manufacturer"/>
+          <field name="x_studio_model" string="Model"/>
+          <field name="x_studio_field_6CAey" string="Management IP"/>
+          <field name="x_studio_serial_number" string="Serial Number"/>
+          <field name="x_studio_mac_address" string="Eth Mac Address"/>
+          <field name="x_studio_firmware_version" string="Firmware Version"/>
+          <field name="x_studio_field_vitwV"/>
+          <field name="x_studio_cpe_device" string="CPE Device"/>
+          <field name="x_studio_field_tQkqb" string="Number of Ports" attrs="{&quot;invisible&quot;: [[&quot;x_studio_cpe_device&quot;,&quot;=&quot;,True]]}"/>
+          <field name="x_studio_in_service" string="In Service" widget="boolean"/>
+          <field name="x_studio_device_type" string="Device Type" default_value="Wireless PTP"/>
+          <field name="x_studio_circuit_ids" string="Circuit IDs" attrs="{}" readonly="1">
+            <tree string="Circuit IDs"/>
+          </field>
+          <field name="x_studio_tower" string="Tower" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+          <field name="x_studio_wireless_ssid" string="Wireless SSID" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+          <field name="x_studio_wireless_mac" string="Wireless MAC" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+          <field name="x_studio_access_point_mode" string="Wireless Module Mode" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;x_studio_device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
+        </xpath>
+        <xpath expr="//group[@name='studio_group_8db41f_right']" position="inside">
+          <field name="x_studio_field_b65bz" string="Circuit IDs" attrs="{}" readonly="1">
+            <tree string="Circuit IDs">
+              <field name="x_studio_field_6DKAX" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="x_studio_field_NPD3S" modifiers="{}"/>
+              <field name="x_studio_tower_1"/>
+              <field name="x_studio_vlanid_1" string="VLANID"/>
+              <field name="x_studio_customer" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="x_studio_service_location" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="x_name"/>
+              <field name="x_studio_customer"/>
+              <field name="x_studio_circuit_type"/>
+            </tree>
+          </field>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]" position="after">
+          <div class="oe_chatter" name="studio_div_d4e761">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_2b36490d-e192-46bd-afb2-3c634f4a87fa">
+      <field name="name">texcor.network.mgmt.equipment.tree</field>
       <field name="model">equipment</field>
       <field name="arch" type="xml">
         <tree string="Equipment">
@@ -108,7 +446,7 @@
           <field name='display_name'/>
         </tree>
       </field>
-    </record> -->
+    </record>
 
     <record model="ir.actions.act_window" id="studio_customization.equipment_1160d73d-af84-4f9e-8960-aab611e056df">
       <field name="name">Equipment Table</field>
@@ -117,7 +455,7 @@
     </record>
 
     <record model="ir.ui.view" id="texcor_network_mgmt_equipment_table_tree">
-      <field name="name">texcor.network.mgmt.equipment.table.name</field>
+      <field name="name">texcor.network.mgmt.equipment.table.tree</field>
       <field name="model">equipment_table</field>
       <field name="arch" type="xml">
         <tree string="Equipment">
@@ -132,8 +470,8 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_table_tree">
-      <field name="name">texcor.network.mgmt.qos.name</field>
+    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_6f60a10e-7434-45d8-a5a2-4e1df2a2b4d1">
+      <field name="name">texcor.network.mgmt.qos.tree</field>
       <field name="model">qos</field>
       <field name="arch" type="xml">
         <tree string="QOS">

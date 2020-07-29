@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class POP(models.Model):
     _name = 'pop'
-    # _inherit = 'mail.thread'
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     POP_TYPE = 	[
         ["Main Line","Main Line"],

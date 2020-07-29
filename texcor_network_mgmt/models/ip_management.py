@@ -48,6 +48,7 @@ class Circuits(models.Model):
     
     description = fields.Text(string='Description')
     network_cidr = fields.Char(string='Network Address/CIDR', compute='_compute_network_cidr')
+    customer = fields.Char(string='Customer', related='circuit_id.customer_id.display_name')
 
     @api.depends('cidr', 'network_address')
     def _compute_network_cidr(self):

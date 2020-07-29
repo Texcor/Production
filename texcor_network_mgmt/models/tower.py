@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class Tower(models.Model):
     _name = 'tower'
-    # _inherit = 'mail.thread'
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     ARRAY_TYPE = [
         ["PTP","PTP"],

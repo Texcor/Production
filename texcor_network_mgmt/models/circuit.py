@@ -5,10 +5,12 @@ from odoo import models, fields, api
 class Circuit(models.Model):
     _name = 'circuit'
 
-    STATUS = 	[
-        ["Pre-Turnup","Pre-Turnup"],
-        ["Test & Turnup","Test & Turnup"],
-        ["Production","Production"]
+    STATUS = [
+        ["PreTurnup","Pre-Turnup"],
+        ["TestTurnup","Test & turnup"],
+        ["circuitActive","Active"],
+        ["Maintenance","Maintenance"],
+        ["Cancelled","Cancelled"]
     ]
 
     CIRCUIT_TYPE = 	[
@@ -23,10 +25,10 @@ class Circuit(models.Model):
     circuit_type = fields.Selection(CIRCUIT_TYPE , 'Circuit Type')
 
     pop_id = fields.Many2one(string='POP', comodel_name='pop', required=True, ondelete='cascade')
-    customer = fields.Many2one(string='Customer', comodel_name='res.partner', required=True, ondelete='cascade')
+    customer_id = fields.Many2one(string='Customer', comodel_name='res.partner', required=True, ondelete='cascade')
     location_id = fields.Many2one(string='Service Location', comodel_name='res.partner', ondelete='cascade')
 
-    customer_id = fields.Integer(string='Customer ID', related='customer.id')
+    customerId = fields.Integer(string='Customer ID', related='customer_id.id')
     service_order_id = fields.Many2one(string='Service Order', comodel_name='sale.order', ondelete='cascade')
     
     status = fields.Selection(STATUS, 'Status')
@@ -55,6 +57,7 @@ class Circuit(models.Model):
     ip_management_ids = fields.One2many(string='IP Addressing', comodel_name='ip_management', inverse_name='circuit_id', ondelete='cascade')
 
     # Additional Info
+    document_filename = fields.Char(string='Filename for documents')
     documents = fields.Binary(string='Test and Turn Up Acceptance')
     notes = fields.Text(string='Notes', widget='text')
     sales_person = fields.Char(string='Sales Person', related='service_order_id.user_id.name')
