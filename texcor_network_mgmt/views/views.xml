@@ -21,6 +21,26 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_75379e7e-6adc-4315-be9c-8170d1662218">
+      <field name="name">texcor.network.mgmt.circuit.form.parent</field>
+      <field name="model">circuit</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet string="Circuit IDs">
+            <div class="oe_title">
+              <h1>
+                <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group name="studio_group_ba0aab">
+              <group name="studio_group_ba0aab_left"/>
+              <group name="studio_group_ba0aab_right"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="studio_customization.odoo_studio_default__7768c378-4294-4a41-bd8a-af462df00b39">
       <field name="name">texcor.network.mgmt.circuit.form</field>
       <field name="model">circuit</field>
@@ -69,7 +89,7 @@
             <group name="studio_group_uVYWX_left" style="width:50%%">
               <field name="ip_management_ids" string="IP Addressing" attrs="{}" readonly="1">
                 <tree string="IP Management">
-                  <field name="x_studio_field_Cb0Ha" style="width:50%%"/>
+                  <field name="network_cidr" style="width:50%%"/>
                   <field name="net_mask" style="width:50%%"/>
                   <field name="provider_ip" style="width:50%%"/>
                 </tree>
@@ -101,7 +121,7 @@
             <field name="status" string="Circuit Status" widget="statusbar"/>
           </header>
         </xpath>
-        <xpath expr="//field[@name='x_name']" position="attributes">
+        <xpath expr="//field[@name='name']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="placeholder">Circuit ID</attribute>
           <attribute name="required"/>
@@ -132,11 +152,31 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_ba6e1fe1-4e9f-49e5-b5bb-885cf0191772">
+      <field name="name">texcor.network.mgmt.ip.management.form.parent</field>
+      <field name="model">ip_management</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet string="IP Management">
+            <div class="oe_title">
+              <h1>
+                <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group name="studio_group_a52687">
+              <group name="studio_group_a52687_left"/>
+              <group name="studio_group_a52687_right"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="studio_customization.odoo_studio_default__7637d0be-bc8f-48dc-80f8-a792dd8ca08b">
       <field name="name">texcor.network.mgmt.ip.management.form</field>
       <field name="model">ip_management</field>
       <field name="arch" type="xml">
-        <xpath expr="//field[@name='x_name']" position="attributes">
+        <xpath expr="//field[@name='name']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="required"/>
           <attribute name="string">Network</attribute>
@@ -194,6 +234,26 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_fd04b088-345f-4014-a155-d476b0cf44bd">
+      <field name="name">texcor.network.mgmt.pop.form.parent</field>
+      <field name="model">pop</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet string="POP">
+            <div class="oe_title">
+              <h1>
+                <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group name="studio_group_a9bf56">
+              <group name="studio_group_a9bf56_left"/>
+              <group name="studio_group_a9bf56_right"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="studio_customization.odoo_studio_default__64139c63-3c99-473f-98fb-e304f2e46829">
       <field name="name">texcor.network.mgmt.pop.form</field>
       <field name="model">pop</field>
@@ -205,7 +265,7 @@
             </group>
           </group>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/div[1]/h1[1]/field[@name='x_name']" position="attributes">
+        <xpath expr="//form[1]/sheet[1]/div[1]/h1[1]/field[@name='name']" position="attributes">
           <attribute name="placeholder">POP Alias</attribute>
           <attribute name="string">POP Name</attribute>
         </xpath>
@@ -287,6 +347,26 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_bf77cd68-1924-4479-8624-199558d89245">
+      <field name="name">texcor.network.mgmt.tower.form.parent</field>
+      <field name="model">tower</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet string="Towers">
+            <div class="oe_title">
+              <h1>
+                <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group name="studio_group_49c229">
+              <group name="studio_group_49c229_left"/>
+              <group name="studio_group_49c229_right"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="studio_customization.odoo_studio_default__f1f917f0-49e5-4500-bb5e-b7de2dfa8aeb">
       <field name="name">texcor.network.mgmt.tower.form</field>
       <field name="model">tower</field>
@@ -295,7 +375,7 @@
           <attribute name="string">Tower info</attribute>
         </xpath>
         <xpath expr="//group[@name='studio_group_49c229_left']" position="inside">
-          <field name="x_studio_field_tjLbn"/>
+          <field name="tower_type_id"/>
           <field name="id" attrs="{}" invisible="1"/>
           <field name="pop_id"/>
           <field name="geo_location" string="Geo Location"/>
@@ -316,7 +396,7 @@
             </group>
             <group name="studio_group_WrQbC_right"/>
           </group>
-          <field name="x_studio_field_V8JAb"/>
+          <field name="circuit_ids"/>
           <group name="studio_group_zPUGa">
             <group name="studio_group_zPUGa_left">
               <field name="sector_1" string="Sector 1"/>
@@ -343,9 +423,9 @@
           </group>
           <group name="studio_group_E4xbc">
             </group>
-          <field name="x_studio_field_nje8n">
+          <field name="circuits_ids">
             <tree string="Circuit IDs">
-              <field name="x_name" modifiers="{}"/>
+              <field name="name" modifiers="{}"/>
               <field name="service_order_id" can_create="true" can_write="true" modifiers="{}"/>
               <field name="status" modifiers="{}"/>
               <field name="pop_id" can_create="true" can_write="true" modifiers="{}"/>
@@ -369,15 +449,35 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_0e17e06a-5263-4b30-a6a9-eeadb5d24a5b">
+      <field name="name">texcor.network.mgmt.equipment.form.parent</field>
+      <field name="model">equipment</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet string="Equipment">
+            <div class="oe_title">
+              <h1>
+                <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group name="studio_group_8db41f">
+              <group name="studio_group_8db41f_left"/>
+              <group name="studio_group_8db41f_right"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="studio_customization.odoo_studio_default__1dd01c09-3ec8-4097-bf27-496397a45494">
       <field name="name">texcor.network.mgmt.equipment.form</field>
       <field name="model">equipment</field>
       <field name="arch" type="xml">
-        <xpath expr="//form[1]/sheet[1]/div[1]/h1[1]/field[@name='x_name']" position="attributes">
+        <xpath expr="//form[1]/sheet[1]/div[1]/h1[1]/field[@name='name']" position="attributes">
           <attribute name="string">DNS Hostname</attribute>
         </xpath>
         <xpath expr="//group[@name='studio_group_8db41f_left']" position="inside">
-          <field name="x_studio_field_a2987" widget="selection" string="Manufacturer"/>
+          <field name="manufacturer" widget="selection"/>
           <field name="model" string="Model"/>
           <field name="ip_management_id" string="Management IP"/>
           <field name="serial_number" string="Serial Number"/>
@@ -397,9 +497,9 @@
           <field name="module_mode" string="Wireless Module Mode" attrs="{&quot;invisible&quot;: [&quot;&amp;&quot;,[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTP&quot;],[&quot;device_type&quot;,&quot;!=&quot;,&quot;Wireless PTMP&quot;]]}"/>
         </xpath>
         <xpath expr="//group[@name='studio_group_8db41f_right']" position="inside">
-          <field name="x_studio_field_b65bz" string="Circuit IDs" attrs="{}" readonly="1">
+          <field name="circuit_ids" string="Circuit IDs" attrs="{}" readonly="1">
             <tree string="Circuit IDs">
-              <field name="x_studio_field_6DKAX" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="pop_id" can_create="true" can_write="true" modifiers="{}"/>
               <field name="location_id" can_create="true" can_write="true" modifiers="{}"/>
               <field name="status" modifiers="{}"/>
               <field name="tower_id"/>

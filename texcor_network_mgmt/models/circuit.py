@@ -48,9 +48,9 @@ class Circuit(models.Model):
     tech_phone = fields.Char(string='Tech Phone', related='tech_name_id.phone')
     tech_email = fields.Char(string='Tech Email', related='tech_name_id.email')
     
-    address = fields.Char(string='Address', related='customer.street')
+    address = fields.Char(string='Address', related='customer_id.street')
     city = fields.Char(string='City', related='location_id.city')
-    state = fields.Char(string='State', related='customer.state_id.name', help='Administrative divisions of a country. E.g. Fed. State, Departement, Canton')
+    state = fields.Char(string='State', related='customer_id.state_id.name', help='Administrative divisions of a country. E.g. Fed. State, Departement, Canton')
     dmarc_location = fields.Char(string='DMARC Location')
 
     order_line_ids = fields.One2many(string='Order Lines', comodel_name='sale.order.line', related='service_order_id.order_line')
