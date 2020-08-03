@@ -1,14 +1,90 @@
 <odoo>
   <data>
-    <record model="ir.actions.act_window" id="studio_customization.circuit_ids_b7c77e23-63a7-47ca-895a-eb8fc6272412">
+
+    <record model="ir.actions.act_window" id="network_mgmt_circuit_window_action">
       <field name="name">Circuit IDs</field>
-      <field name="res_model">circuit</field>
+      <field name="res_model">texcor.circuit</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_f45be9a3-ea9d-4c15-8558-a7e3d3fbf6c3">
+    <record model="ir.actions.act_window" id="network_mgmt_ip_window_action">
+      <field name="name">IP MGMT</field>
+      <field name="res_model">texcor.ip_management</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="network_mgmt_pop_window_action">
+      <field name="name">POP</field>
+      <field name="res_model">texcor.pop</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="network_mgmt_tower_window_action">
+      <field name="name">Tower</field>
+      <field name="res_model">texcor.tower</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="network_mgmt_equipment_window_action">
+      <field name="name">Equipment</field>
+      <field name="res_model">texcor.equipment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="network_mgmt_qos_window_action">
+      <field name="name">QOS</field>
+      <field name="res_model">texcor.qos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="network_mgmt_equipment_table_window_action">
+      <field name="name">Equipment Table</field>
+      <field name="res_model">texcor.equipment_table</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Circuits" sequence="0"
+            id="network_mgmt_circuit_submenu" 
+            parent="studio_customization.circuit_management_1e9f1e17-b509-4bfb-acbb-20ffca3daa68"
+            action="network_mgmt_circuit_window_action"/>
+
+    <menuitem name="IP" sequence="1"
+            id="network_mgmt_ip_submenu" 
+            parent="studio_customization.circuit_management_1e9f1e17-b509-4bfb-acbb-20ffca3daa68"
+            action="network_mgmt_ip_window_action"/>
+
+    <menuitem name="POPs" sequence="2"
+            id="network_mgmt_pop_submenu" 
+            parent="studio_customization.circuit_management_1e9f1e17-b509-4bfb-acbb-20ffca3daa68"
+            action="network_mgmt_pop_window_action"/>
+
+    <menuitem name="Tower" sequence="3"
+            id="network_mgmt_tower_submenu" 
+            parent="studio_customization.circuit_management_1e9f1e17-b509-4bfb-acbb-20ffca3daa68"
+            action="network_mgmt_tower_window_action"/>
+
+    <menuitem name="Equipment" sequence="4"
+            id="network_mgmt_equipment_submenu" 
+            parent="studio_customization.circuit_management_1e9f1e17-b509-4bfb-acbb-20ffca3daa68"
+            action="network_mgmt_equipment_window_action"/>
+
+    <menuitem name="Settings" sequence="5"
+            id="network_mgmt_settings_submenu" 
+            parent="studio_customization.circuit_management_1e9f1e17-b509-4bfb-acbb-20ffca3daa68"/>
+
+    <menuitem name="QOS" sequence="0"
+            id="network_mgmt_qos_submenu" 
+            parent="network_mgmt_settings_submenu"
+            action="network_mgmt_qos_window_action"/>
+    
+    <menuitem name="Equipment" sequence="1"
+            id="network_mgmt_equipment_table_submenu" 
+            parent="network_mgmt_settings_submenu"
+            action="network_mgmt_equipment_table_window_action"/>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt.circuit_tree">
       <field name="name">texcor.network.mgmt.circuit.tree</field>
-      <field name="model">circuit</field>
+      <field name="model">texcor.circuit</field>
       <field name="arch" type="xml">
         <tree string="Circuit IDs">
           <field name='name'/>
@@ -21,9 +97,68 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_75379e7e-6adc-4315-be9c-8170d1662218">
+    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_tree">
+      <field name="name">texcor.network.mgmt.equipment.tree</field>
+      <field name="model">texcor.equipment</field>
+      <field name="arch" type="xml">
+        <tree string="Equipment">
+          <field name='in_service'/>
+          <field name='name'/>
+          <field name='ip_management_id'/>
+          <field name='pop_id'/>
+          <field name='manufacturer'/>
+          <field name='model'/>
+          <field name='serial_number'/>
+          <field name='display_name'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_ip_management_tree">
+      <field name="name">texcor.network.mgmt.ip.management.tree</field>
+      <field name="model">texcor.ip_management</field>
+      <field name="arch" type="xml">
+        <tree string="IP MGMT">
+          <field name='name'/>
+          <field name='provider_ip'/>
+          <field name='cidr'/>
+          <field name='parent_network'/>
+          <field name='internal_use'/>
+          <field name='circuit_id'/>
+          <field name='location_id'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_pop_tree">
+      <field name="name">texcor.network.mgmt.pop.tree</field>
+      <field name="model">texcor.pop</field>
+      <field name="arch" type="xml">
+        <tree string="POP">
+          <field name='name'/>
+          <field name='geo_cooridinates'/>
+          <field name='pop_type'/>
+          <field name='tower_ids'/>
+          <field name='circuit_ids'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_tower_tree">
+      <field name="name">texcor.network.mgmt.tower.tree</field>
+      <field name="model">texcor.tower</field>
+      <field name="arch" type="xml">
+        <tree string="Tower">
+          <field name='name'/>
+          <field name='pop_id'/>
+          <field name='array_type'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="texcor_network_mgmt_circuit_form_parent">
       <field name="name">texcor.network.mgmt.circuit.form.parent</field>
-      <field name="model">circuit</field>
+      <field name="model">texcor.circuit</field>
       <field name="arch" type="xml">
         <form>
           <sheet string="Circuit IDs">
@@ -41,9 +176,10 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__7768c378-4294-4a41-bd8a-af462df00b39">
+    <record model="ir.ui.view" id="texcor_network_mgmt_circuit_form">
       <field name="name">texcor.network.mgmt.circuit.form</field>
-      <field name="model">circuit</field>
+      <field name="model">texcor.circuit</field>
+      <field name='inherit_id' ref='texcor_network_mgmt_circuit_form_parent'/>
       <field name="arch" type="xml">
         <xpath expr="//group[@name='studio_group_ba0aab']" position="replace">
           <group name="studio_group_33Sa5">
@@ -130,31 +266,9 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="studio_customization.ip_mgmt_55e18c3f-c3dc-4260-bf23-c09599acb00a">
-      <field name="name">IP MGMT</field>
-      <field name="res_model">ip_management</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_7c36b876-b444-4e5a-a671-ab4ad2c35817">
-      <field name="name">texcor.network.mgmt.ip.management.tree</field>
-      <field name="model">ip_management</field>
-      <field name="arch" type="xml">
-        <tree string="IP MGMT">
-          <field name='name'/>
-          <field name='provider_ip'/>
-          <field name='cidr'/>
-          <field name='parent_network'/>
-          <field name='internal_use'/>
-          <field name='circuit_id'/>
-          <field name='location_id'/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_ba6e1fe1-4e9f-49e5-b5bb-885cf0191772">
+    <record model="ir.ui.view" id="texcor_network_mgmt_ip_management_form_parent">
       <field name="name">texcor.network.mgmt.ip.management.form.parent</field>
-      <field name="model">ip_management</field>
+      <field name="model">texcor.ip_management</field>
       <field name="arch" type="xml">
         <form>
           <sheet string="IP Management">
@@ -172,9 +286,10 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__7637d0be-bc8f-48dc-80f8-a792dd8ca08b">
+    <record model="ir.ui.view" id="texcor_network_mgmt_ip_management_form">
       <field name="name">texcor.network.mgmt.ip.management.form</field>
-      <field name="model">ip_management</field>
+      <field name="model">texcor.ip_management</field>
+      <field name='inherit_id' ref='texcor_network_mgmt_ip_management_form_parent'/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='name']" position="attributes">
           <attribute name="attrs">{}</attribute>
@@ -214,29 +329,9 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="studio_customization.pop_718877a3-b260-4420-92bb-d793150b3001">
-      <field name="name">POP</field>
-      <field name="res_model">pop</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_81d2e757-1c5c-4e2f-a8b3-1a6ed5723f2d">
-      <field name="name">texcor.network.mgmt.pop.trees</field>
-      <field name="model">pop</field>
-      <field name="arch" type="xml">
-        <tree string="POP">
-          <field name='name'/>
-          <field name='geo_cooridinates'/>
-          <field name='pop_type'/>
-          <field name='tower_ids'/>
-          <field name='circuit_ids'/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_fd04b088-345f-4014-a155-d476b0cf44bd">
+    <record model="ir.ui.view" id="texcor_network_mgmt_pop_form_parent">
       <field name="name">texcor.network.mgmt.pop.form.parent</field>
-      <field name="model">pop</field>
+      <field name="model">texcor.pop</field>
       <field name="arch" type="xml">
         <form>
           <sheet string="POP">
@@ -254,9 +349,10 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__64139c63-3c99-473f-98fb-e304f2e46829">
+    <record model="ir.ui.view" id="texcor_network_mgmt_pop_form">
       <field name="name">texcor.network.mgmt.pop.form</field>
-      <field name="model">pop</field>
+      <field name="model">texcor.pop</field>
+      <field name='inherit_id' ref='texcor_network_mgmt_pop_form_parent'/>
       <field name="arch" type="xml">
         <xpath expr="//group[@name='studio_group_a9bf56_right']" position="replace">
           <group name="studio_group_i40ER">
@@ -329,27 +425,9 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="studio_customization.towers_2be476d5-0aca-47b9-b4e9-de919ec014b8">
-      <field name="name">Tower</field>
-      <field name="res_model">tower</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_81d2e757-1c5c-4e2f-a8b3-1a6ed5723f2d">
-      <field name="name">texcor.network.mgmt.tower.tree</field>
-      <field name="model">tower</field>
-      <field name="arch" type="xml">
-        <tree string="Tower">
-          <field name='name'/>
-          <field name='pop_id'/>
-          <field name='array_type'/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_bf77cd68-1924-4479-8624-199558d89245">
+    <record model="ir.ui.view" id="texcor_network_mgmt_tower_form_parent">
       <field name="name">texcor.network.mgmt.tower.form.parent</field>
-      <field name="model">tower</field>
+      <field name="model">texcor.tower</field>
       <field name="arch" type="xml">
         <form>
           <sheet string="Towers">
@@ -367,9 +445,10 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__f1f917f0-49e5-4500-bb5e-b7de2dfa8aeb">
+    <record model="ir.ui.view" id="texcor_network_mgmt_tower_form">
       <field name="name">texcor.network.mgmt.tower.form</field>
-      <field name="model">tower</field>
+      <field name="model">texcor.tower</field>
+      <field name='inherit_id' ref='texcor_network_mgmt_tower_form_parent'/>
       <field name="arch" type="xml">
         <xpath expr="//group[@name='studio_group_49c229_left']" position="attributes">
           <attribute name="string">Tower info</attribute>
@@ -443,15 +522,9 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="studio_customization.equipment_39221231-3c4f-4b8e-be88-a96be4df6943">
-      <field name="name">Equipment</field>
-      <field name="res_model">equipment</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_form_view_fo_0e17e06a-5263-4b30-a6a9-eeadb5d24a5b">
+    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_form_parent">
       <field name="name">texcor.network.mgmt.equipment.form.parent</field>
-      <field name="model">equipment</field>
+      <field name="model">texcor.equipment</field>
       <field name="arch" type="xml">
         <form>
           <sheet string="Equipment">
@@ -469,9 +542,10 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.odoo_studio_default__1dd01c09-3ec8-4097-bf27-496397a45494">
+    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_form">
       <field name="name">texcor.network.mgmt.equipment.form</field>
-      <field name="model">equipment</field>
+      <field name="model">texcor.equipment</field>
+      <field name='inherit_id' ref='texcor_network_mgmt_equipment_form_parent'/>
       <field name="arch" type="xml">
         <xpath expr="//form[1]/sheet[1]/div[1]/h1[1]/field[@name='name']" position="attributes">
           <attribute name="string">DNS Hostname</attribute>
@@ -521,53 +595,5 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_2b36490d-e192-46bd-afb2-3c634f4a87fa">
-      <field name="name">texcor.network.mgmt.equipment.tree</field>
-      <field name="model">equipment</field>
-      <field name="arch" type="xml">
-        <tree string="Equipment">
-          <field name='in_service'/>
-          <field name='name'/>
-          <field name='ip_management_id'/>
-          <field name='pop_id'/>
-          <field name='manufacturer'/>
-          <field name='model'/>
-          <field name='serial_number'/>
-          <field name='display_name'/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.actions.act_window" id="studio_customization.equipment_1160d73d-af84-4f9e-8960-aab611e056df">
-      <field name="name">Equipment Table</field>
-      <field name="res_model">equipment_table</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.ui.view" id="texcor_network_mgmt_equipment_table_tree">
-      <field name="name">texcor.network.mgmt.equipment.table.tree</field>
-      <field name="model">equipment_table</field>
-      <field name="arch" type="xml">
-        <tree string="Equipment">
-          <field name='name'/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.actions.act_window" id="studio_customization.qos_8ac1826f-92d9-493e-b1fc-f2a8d42edd56">
-      <field name="name">QOS</field>
-      <field name="res_model">qos</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.ui.view" id="studio_customization.default_tree_view_fo_6f60a10e-7434-45d8-a5a2-4e1df2a2b4d1">
-      <field name="name">texcor.network.mgmt.qos.tree</field>
-      <field name="model">qos</field>
-      <field name="arch" type="xml">
-        <tree string="QOS">
-          <field name='name'/>
-        </tree>
-      </field>
-    </record>
   </data>
 </odoo>

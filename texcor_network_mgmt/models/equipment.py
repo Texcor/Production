@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class Equipment(models.Model):
-    _name = 'equipment'
+    _name = 'texcor.equipment'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     MANUFACTURER = [
@@ -50,10 +50,10 @@ class Equipment(models.Model):
     device_type = fields.Selection(DEVICE_TYPE, 'Device Type')
     manufacturer = fields.Selection(MANUFACTURER, 'Manufacturer')
     
-    ip_management_id = fields.Many2one(string='Management IP', comodel_name='ip_management', ondelete='cascade')
-    pop_id = fields.Many2one(string='POP', comodel_name='pop', ondelete='cascade')
-    circuit_ids = fields.One2many(string='Circuit IDs', comodel_name='circuit', inverse_name='ap_name_id', ondelete='cascade')
-    tower_id = fields.Many2one(string='Tower', comodel_name='tower', ondelete='cascade')
+    ip_management_id = fields.Many2one(string='Management IP', comodel_name='texcor.ip_management', ondelete='cascade')
+    pop_id = fields.Many2one(string='POP', comodel_name='texcor.pop', ondelete='cascade')
+    circuit_ids = fields.One2many(string='Circuit IDs', comodel_name='texcor.circuit', inverse_name='ap_name_id', ondelete='cascade')
+    tower_id = fields.Many2one(string='Tower', comodel_name='texcor.tower', ondelete='cascade')
     wireless_ssid = fields.Char(string='Wireless SSID')
     wireless_mac = fields.Char(string='Wireless MAC')
     module_mode = fields.Selection(MODULE_MODE, 'Wireless Module Mode')

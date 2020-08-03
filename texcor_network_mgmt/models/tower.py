@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class Tower(models.Model):
-    _name = 'tower'
+    _name = 'texcor.tower'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
     ARRAY_TYPE = [
@@ -21,8 +21,8 @@ class Tower(models.Model):
     name = fields.Char(string='Name')
 
     # Tower info
-    tower_type_id = fields.Many2one(string='Tower Type', comodel_name='tower_type', ondelete='cascade')
-    pop_id = fields.Many2one(string='POP', comodel_name='pop', ondelete='cascade')
+    tower_type_id = fields.Many2one(string='Tower Type', comodel_name='texcor.tower_type', ondelete='cascade')
+    pop_id = fields.Many2one(string='POP', comodel_name='texcor.pop', ondelete='cascade')
     geo_location = fields.Char(string='Geo Location')
     tower_height = fields.Integer(string='Tower Height (in ft)')
 
@@ -32,8 +32,8 @@ class Tower(models.Model):
     array_height = fields.Integer(string='Array Height (in ft)')
 
     # Network info
-    ap_name_id = fields.Many2one(string='AP Name', comodel_name='equipment', ondelete='cascade')
-    circuit_ids = fields.One2many(string='Circuit IDs', comodel_name='circuit', inverse_name='tower_id', ondelete='cascade')
+    ap_name_id = fields.Many2one(string='AP Name', comodel_name='texcor.equipment', ondelete='cascade')
+    circuit_ids = fields.One2many(string='Circuit IDs', comodel_name='texcor.circuit', inverse_name='tower_id', ondelete='cascade')
 
     # Sector 1
     sector_1 = fields.Char(string='Sector 1')
@@ -55,4 +55,4 @@ class Tower(models.Model):
     h_azimuth_4 = fields.Char(string='H Azimuth')
     v_azimuth_4 = fields.Char(string='V Azimuth')
 
-    circuits_ids = fields.Many2many(string='Circuits IDs', comodel_name='circuit', relation='texcor_circuits_towers', ondelete='cascade')
+    circuits_ids = fields.Many2many(string='Circuits IDs', comodel_name='texcor.circuit', relation='texcor_circuits_towers', ondelete='cascade')

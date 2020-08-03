@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class EquipmentTable(models.Model):
-    _name = 'equipment_table'
+    _name = 'texcor.equipment_table'
     
     oldid = fields.Integer(string='Old x_model reference')
     

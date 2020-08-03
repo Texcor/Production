@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class Circuits(models.Model):
-    _name = 'ip_management'
+    _name = 'texcor.ip_management'
 
     CIDR = [
         ('/18', '/18'),
@@ -42,8 +42,8 @@ class Circuits(models.Model):
     parent_network = fields.Boolean(string='Parent Network')
     internal_use = fields.Boolean(string='Internal Use')
 
-    equipment_id = fields.Many2one(string='Equipment', comodel_name='equipment', ondelete='cascade')
-    circuit_id = fields.Many2one(string='Circuit IDs', comodel_name='circuit', ondelete='cascade')
+    equipment_id = fields.Many2one(string='Equipment', comodel_name='texcor.equipment', ondelete='cascade')
+    circuit_id = fields.Many2one(string='Circuit IDs', comodel_name='texcor.circuit', ondelete='cascade')
     location_id = fields.Many2one(string='Service Location', comodel_name='res.partner', ondelete='cascade')
     
     description = fields.Text(string='Description')

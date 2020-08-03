@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class Circuit(models.Model):
-    _name = 'circuit'
+    _name = 'texcor.circuit'
 
     STATUS = [
         ["PreTurnup","Pre-Turnup"],
@@ -24,7 +24,7 @@ class Circuit(models.Model):
     # Circuit Informaiton
     circuit_type = fields.Selection(CIRCUIT_TYPE , 'Circuit Type')
 
-    pop_id = fields.Many2one(string='POP', comodel_name='pop', required=True, ondelete='cascade')
+    pop_id = fields.Many2one(string='POP', comodel_name='texcor.pop', required=True, ondelete='cascade')
     customer_id = fields.Many2one(string='Customer', comodel_name='res.partner', required=True, ondelete='cascade')
     location_id = fields.Many2one(string='Service Location', comodel_name='res.partner', ondelete='cascade')
 
@@ -33,13 +33,13 @@ class Circuit(models.Model):
     
     status = fields.Selection(STATUS, 'Status')
     
-    qos_id = fields.Many2one(string='QOS', comodel_name='qos', ondelete='cascade')
+    qos_id = fields.Many2one(string='QOS', comodel_name='texcor.qos', ondelete='cascade')
     vlanid = fields.Integer(string='VLANID')
 
-    ap_name_id = fields.Many2one(string='AP Name', comodel_name='equipment', invisible='[("circuit_type", "!=", "Wireless")]', ondelete='cascade')
-    tower_id = fields.Many2one(string='Tower', comodel_name='tower', related='ap_name_id.tower_id', invisible='[("circuit_type","!=","Wireless")]')
+    ap_name_id = fields.Many2one(string='AP Name', comodel_name='texcor.equipment', invisible='[("circuit_type", "!=", "Wireless")]', ondelete='cascade')
+    tower_id = fields.Many2one(string='Tower', comodel_name='texcor.tower', related='ap_name_id.tower_id', invisible='[("circuit_type","!=","Wireless")]')
     
-    pe_switch_id = fields.Many2one(string='PE Switch', comodel_name='equipment', invisible='[["circuit_type","=","Wireless"]]', ondelete='cascade')
+    pe_switch_id = fields.Many2one(string='PE Switch', comodel_name='texcor.equipment', invisible='[["circuit_type","=","Wireless"]]', ondelete='cascade')
     pe_switch_port = fields.Integer(string='PE Switch Port', help='Enter the Port Number i.e. 1/0/0', invisible='[["circuit_type","=","Wireless"]]')
 
     # Customer Site Information
@@ -54,7 +54,7 @@ class Circuit(models.Model):
     dmarc_location = fields.Char(string='DMARC Location')
 
     order_line_ids = fields.One2many(string='Order Lines', comodel_name='sale.order.line', related='service_order_id.order_line')
-    ip_management_ids = fields.One2many(string='IP Addressing', comodel_name='ip_management', inverse_name='circuit_id', ondelete='cascade')
+    ip_management_ids = fields.One2many(string='IP Addressing', comodel_name='texcor.ip_management', inverse_name='circuit_id', ondelete='cascade')
 
     # Additional Info
     document_filename = fields.Char(string='Filename for documents')
