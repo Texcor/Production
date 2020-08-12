@@ -1,0 +1,7 @@
+<odoo>
+
+    <record id="user_type_epic" model="res.groups">
+        <field name="name">User Types / EPIC</field>
+    </record>
+
+</odoo>
