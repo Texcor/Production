@@ -2,7 +2,6 @@
 
     <record id="user_type_epic" model="res.groups">
         <field name="name">User Types / EPIC</field>
-        <field name="implied_ids" eval="[(4, 70)]"/>
     </record>
 
 </odoo>

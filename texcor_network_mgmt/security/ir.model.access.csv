@@ -8,15 +8,6 @@ texcor_network_mgmt_qos,texcor.qos,model_texcor_qos,base.group_user,1,0,0,0
 texcor_network_mgmt_tower,texcor.tower,model_texcor_tower,base.group_user,1,0,0,0
 texcor_network_mgmt_tower_type,texcor.type,model_texcor_tower_type,base.group_user,1,0,0,0
 
-texcor_network_mgmt_circuit,texcor.circuit,model_texcor_circuit,user_type_epic,1,0,0,0
-texcor_network_mgmt_equipment,texcor.equipment,model_texcor_equipment,user_type_epic,1,0,0,0
-texcor_network_mgmt_equipment_table,texcor.equipment_table,model_texcor_equipment_table,user_type_epic,1,0,0,0
-texcor_network_mgmt_ip_management,texcor.ip_managment,model_texcor_ip_management,user_type_epic,1,0,0,0
-texcor_network_mgmt_pop,texcor.pop,model_texcor_pop,user_type_epic,1,0,0,0
-texcor_network_mgmt_qos,texcor.qos,model_texcor_qos,user_type_epic,1,0,0,0
-texcor_network_mgmt_tower,texcor.tower,model_texcor_tower,user_type_epic,1,0,0,0
-texcor_network_mgmt_tower_type,texcor.type,model_texcor_tower_type,user_type_epic,1,0,0,0
-
 texcor_network_mgmt_circuit,texcor.circuit,model_texcor_circuit,base.group_system,1,1,1,1
 texcor_network_mgmt_equipment,texcor.equipment,model_texcor_equipment,base.group_system,1,1,1,1
 texcor_network_mgmt_equipment_table,texcor.equipment_table,model_texcor_equipment_table,base.group_system,1,1,1,1
