@@ -91,6 +91,7 @@
           <field name='service_order_id'/>
           <field name='status'/>
           <field name='pop_id'/>
+          <field name='customer_id'/>
           <field name='location_id'/>
           <field name='write_date'/>
         </tree>
