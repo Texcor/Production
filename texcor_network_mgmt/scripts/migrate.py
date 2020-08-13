@@ -13,7 +13,14 @@ mods = {
     'ap_name_id': 'equipment',
     'tower_id': 'tower',
     'equipment_id': 'equipment',
-    'ip_management_id': 'ip_management'
+    'ip_management_id': 'ip_management',
+    'location_id': 'res.partner',
+    'customer_id': 'res.partner',
+    'service_order_id': 'sale.order',
+    'pe_switch_id': 'equipment',
+    'tech_name_id': 'res.partner',
+    'circuit_id': 'circuit',
+    'tower_type_id': 'tower_type'
 }
 
 circuit = {
